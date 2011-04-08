@@ -1,0 +1,7 @@
+include LICENSE.txt
+include MANIFEST.in
+include README.rst
+recursive-include tbs *
+recursive-include docs *
+recursive-exclude tbs *.pyc
+prune docs/_build/*
