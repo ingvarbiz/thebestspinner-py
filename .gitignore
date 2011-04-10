@@ -1,4 +1,5 @@
 *.pyc
+*.bak
 *.swp
 docs/_build/*
 dist/*

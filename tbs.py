@@ -33,10 +33,11 @@ class Api(object):
     """
     A class to use The Best Spinner api (get an account at http://snurl.com/the-best-spinner) 
     """
-    def __init__(self, username, password):
+    def __init__(self, username, password, quotalimit = 250):
         self.url = 'http://thebestspinner.com/api.php'
         self.username = username
         self.password = password
+        self.quotalimit = quotalimit
         self.authenticated = False
         self.token = ''
 
@@ -178,7 +179,16 @@ class Api(object):
             else:
                 raise Exception("randomSpin failed, reason unknown")
 
-   
+    def apiQuota(self):
+        """
+        Returns the number of queries allowed to perform today
+        """
+        queries_today = self.apiQueries()
+        queries_allowed = self.quotalimit - queries_today
+        if queries_allowed < 0:
+            quesries_allowed = 0
+        return queries_allowed
+        
     def apiQueries(self):
         """
         Returns the number of api requests made today (the api has a limit of 250 per day).
