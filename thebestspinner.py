@@ -247,3 +247,6 @@ class Api(object):
     def addBatch():
         pass
     
+    def recLocalThesaurus():
+        pass
+    
